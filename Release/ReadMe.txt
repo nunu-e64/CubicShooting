@@ -9,7 +9,8 @@
 　ヌヌ		＠京都大学松茸定食 http://matsutei.web.fc2.com/
 
 【開発環境】
-　VisualC++ 2010
+　VisualC++ 2010 + DXライブラリ（http://homepage2.nifty.com/natupaji/DxLib/）
+
 
 
 -----------------------Cube、宇宙へ！！---------------------------------
