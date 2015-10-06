@@ -1,7 +1,7 @@
 #[Rr]elease/
 [Dd]ebug/
 
-#*.exe
+!*.exe
 *.lastbuildstate
 *.manifest
 *.tlog
