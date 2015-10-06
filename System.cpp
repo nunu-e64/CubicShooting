@@ -6,6 +6,11 @@
 
 int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow )
 {
+#ifdef MEMORY_CHECK
+	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);  //newをdeleteしていない問題を検出
+#endif
+
+
 	SetWindowSize(WINDOW_WIDTH, WINDOW_HEIGHT);	//ウィンドウサイズ変更
 	ChangeWindowMode( TRUE ) ; // ウインドウモードに変更
 	SetDrawScreen( DX_SCREEN_BACK ); //描画先を画面裏に

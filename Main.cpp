@@ -12,6 +12,8 @@
 #include "Opening.h"
 #include "Ranking.h"
 
+
+/*当時はdeleteの必要性どころか存在すら認知してなかった模様ｗｗｗこれは酷いｗｗｗ*/
 CMine Mine;
 CMyBall *MyBall = new CMyBall[MY_BALL_NUM];
 CEnemyBall *EnemyBall = new CEnemyBall[ENEMY_BALL_NUM];
