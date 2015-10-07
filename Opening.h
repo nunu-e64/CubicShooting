@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "Define.h"
 
 class COpening{
@@ -12,16 +12,16 @@ public:
 
 private:
 	int Scene;
-		//0:~ƒ‰ƒXƒgƒWƒƒƒ“ƒv
-		//1:~…•½ˆÚ“®
-		//2:ƒ^ƒCƒgƒ‹“oê
-		//3:ƒ^ƒCƒgƒ‹
+		//0:~ãƒ©ã‚¹ãƒˆã‚¸ãƒ£ãƒ³ãƒ—
+		//1:~æ°´å¹³ç§»å‹•
+		//2:ã‚¿ã‚¤ãƒˆãƒ«ç™»å ´
+		//3:ã‚¿ã‚¤ãƒˆãƒ«
 
 	int StartTime;
 	int MemoTime;
 	int NowTime;
 
-	Vector Pos;		//”wŒi‰æ‘œ‚Ì¶ã‚Ì“_
+	Vector Pos;		//èƒŒæ™¯ç”»åƒã®å·¦ä¸Šã®ç‚¹
 	Vector OldPos[3];
 	Vector Velocity;
 	double DeadLineX;

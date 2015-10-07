@@ -1,4 +1,4 @@
-#include "DxLib.h"
+﻿#include "DxLib.h"
 #include "Stage.h"
 
 #define STAGE_MAX 9
@@ -24,8 +24,8 @@ void CStage::Init(){
 void CStage::Draw(Vector _mypos){
 	Vector DrawPos;
 
-	//�w�i		
-		DrawPos.x = (int)(WORLD_WIDTH+_mypos.x-WINDOW_WIDTH/2) % PicSizeX;		//WORLD_WIDTH�𑫂��Ă���͉̂�ʍ��[�ł̏����̂���
+	//背景		
+		DrawPos.x = (int)(WORLD_WIDTH+_mypos.x-WINDOW_WIDTH/2) % PicSizeX;		//WORLD_WIDTHを足しているのは画面左端での処理のため
 		DrawPos.y = (int)(WORLD_HEIGHT+_mypos.y-WINDOW_HEIGHT/2) % PicSizeY;
 		
 		DrawRectGraph(0, 0, (int)DrawPos.x, (int)DrawPos.y, PicSizeX-(int)DrawPos.x, PicSizeY-(int)DrawPos.y, ImgBack, FALSE, FALSE);
@@ -45,9 +45,9 @@ void CStage::Draw(Vector _mypos){
 			}
 		}
 
-	//�}�[�J�[
+	//マーカー
 		if (AliveStarNum>0){
-			if(abs(NearestStar.x)>WINDOW_WIDTH/2+70 || abs(NearestStar.y)>WINDOW_HEIGHT/2+70){
+			if(abs((int)(NearestStar.x))>WINDOW_WIDTH/2+70 || abs((int)(NearestStar.y))>WINDOW_HEIGHT/2+70){
 				DrawRotaGraph2(WINDOW_WIDTH/2, WINDOW_HEIGHT/2,  50-min(WINDOW_WIDTH,WINDOW_HEIGHT)/2, 13, 1, GetAngle(NearestStar), ImgMark, true, false);
 			}
 		}
@@ -60,24 +60,24 @@ void CStage::DrawCaption(bool _showexplain){
 	else			DrawString(0, 20, "Mode  : Easy", WHITE);
 
 	if ((StageNum==STAGE_MIN || _showexplain)){
-		DrawString(WINDOW_WIDTH-180-GetDrawFormatStringWidth("�c��̃A�W�g�̐�"), 10, "�c��̃A�W�g�̐�  ��  ��  ��  ��", GRAY) ;
-		DrawCenterString(WINDOW_WIDTH/2, 70, "�U�R�𐶂�ł���G�̃A�W�g�������Ă͂�������I", GRAY) ;
-		DrawCenterString(WINDOW_WIDTH/2, 100, "�A�W�g�̓I�����W�F�̈�̕����ɂ��邼�I", GRAY) ;
-		DrawCenterString(WINDOW_WIDTH/2, WINDOW_HEIGHT-110, "�q���g1�F�U�R��A�W�g���̂ɂ������Ă��_���[�W�͂���܂���@�@�@", GRAY);
-		DrawCenterString(WINDOW_WIDTH/2, WINDOW_HEIGHT-85, "�q���g2�F�A�W�g�����ɂ߂肱�ނƎl�����̃V���b�g���ׂĂ��q�b�g��", GRAY);
-		DrawCenterString(WINDOW_WIDTH/2, WINDOW_HEIGHT-65, "�@�@�@�@ �ƂĂ������̃_���[�W��^�����܂��@�@�@�@�@�@�@�@�@�@", GRAY);
+		DrawString(WINDOW_WIDTH-180-GetDrawFormatStringWidth("残りのアジトの数"), 10, "残りのアジトの数  →  →  →  →", GRAY) ;
+		DrawCenterString(WINDOW_WIDTH/2, 70, "ザコを生んでいる敵のアジトを見つけてはかいせよ！", GRAY) ;
+		DrawCenterString(WINDOW_WIDTH/2, 100, "アジトはオレンジ色の印の方向にあるぞ！", GRAY) ;
+		DrawCenterString(WINDOW_WIDTH/2, WINDOW_HEIGHT-110, "ヒント1：ザコやアジト自体にあたってもダメージはありません　　　", GRAY);
+		DrawCenterString(WINDOW_WIDTH/2, WINDOW_HEIGHT-85, "ヒント2：アジト中央にめりこむと四方向のショットすべてがヒットし", GRAY);
+		DrawCenterString(WINDOW_WIDTH/2, WINDOW_HEIGHT-65, "　　　　 とても多くのダメージを与えられます　　　　　　　　　　", GRAY);
 	}
 
-	DrawStringToHandle(WINDOW_WIDTH-GetDrawFormatStringWidthToHandle(FontMini, "��������:�ړ��@Esc:�����@Esc������:�Q�[���I�� "), WINDOW_HEIGHT-20, "��������:�ړ��@Esc:�����@Esc������:�Q�[���I�� ", GRAY, FontMini);
+	DrawStringToHandle(WINDOW_WIDTH-GetDrawFormatStringWidthToHandle(FontMini, "↑↓←→:移動　Esc:自死　Esc長押し:ゲーム終了 "), WINDOW_HEIGHT-20, "↑↓←→:移動　Esc:自死　Esc長押し:ゲーム終了 ", GRAY, FontMini);
 }
 
 void CStage::DrawStarCount(){
 	for( int i=1; i<=AliveStarNum; i++){
-		DrawString(WINDOW_WIDTH-i*30, 10, "��", GREEN);
+		DrawString(WINDOW_WIDTH-i*30, 10, "☆", GREEN);
 	}
 }
 void CStage::DrawEnemyCount(int _alive_enemynum){
-	DrawFormatString(WINDOW_WIDTH-100, 400, GRAY, "�U�R�̐��F%d", _alive_enemynum);
+	DrawFormatString(WINDOW_WIDTH-100, 400, GRAY, "ザコの数：%d", _alive_enemynum);
 }
 
 

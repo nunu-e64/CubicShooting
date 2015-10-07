@@ -1,4 +1,4 @@
-#include "DxLib.h"
+ï»¿#include "DxLib.h"
 #include "Define.h"
 #include "math.h"
 #include "Star.h"
@@ -87,13 +87,13 @@ void CStar::Draw(Vector _mypos, int _timecount){
 		//Star
 		DrawRotaGraph((int)(DrawPos.x), (int)(DrawPos.y), 1, (_timecount%300)*PI/150, ImgStar, true) ;
 		
-		//Enemy¶¬ƒ^ƒCƒ€ƒQ[ƒW
+		//Enemyç”Ÿæˆã‚¿ã‚¤ãƒ ã‚²ãƒ¼ã‚¸
 		for(int i=0; i<3; i++){
 			DrawExtendGraph((int)DrawPos.x-12, (int)DrawPos.y-3+8*(i-1), (int)DrawPos.x+12, (int)DrawPos.y+3+8*(i-1), ImgStarGauge[0], true);
 			DrawExtendGraph((int)DrawPos.x-11, (int)DrawPos.y-2+8*(i-1), (int)(DrawPos.x-11 + 22 * (1+(_timecount%EnemyBirthTime[i])) / EnemyBirthTime[i]), (int)DrawPos.y+2+8*(i-1), ImgStarGauge[1], true);
 		}
 	}else{
-		//ƒeƒBƒEƒ“ƒeƒBƒEƒ“]
+		//ãƒ†ã‚£ã‚¦ãƒ³ãƒ†ã‚£ã‚¦ãƒ³]
 		for (int i=0; i<8; i++){
 			if(_timecount/5 % 2 == 0) DrawCircle((int)(DeadCircleDrawPos[i].x+DrawPos.x), (int)(DeadCircleDrawPos[i].y+DrawPos.y), 12, GetColor(255,100,0), false);
 		}
@@ -126,15 +126,15 @@ bool CStar::EnemyBirthNow(int _timecount, int _index){
 
 Vector CStar::DrawPosition(Vector _pos, Vector _mypos){
 	Vector DrawPos;
-	if(abs(_pos.x-_mypos.x)<WORLD_WIDTH/2){
+	if(abs((int)(_pos.x-_mypos.x))<WORLD_WIDTH/2){
 		DrawPos.x = _pos.x-_mypos.x + WINDOW_WIDTH/2;
 	}else{
-		DrawPos.x = -((_pos.x-_mypos.x)/abs(_pos.x-_mypos.x))*(WORLD_WIDTH-abs(_pos.x-_mypos.x)) + WINDOW_WIDTH/2 ;
+		DrawPos.x = -((_pos.x-_mypos.x)/abs((int)(_pos.x-_mypos.x)))*(WORLD_WIDTH-abs((int)(_pos.x-_mypos.x))) + WINDOW_WIDTH/2 ;
 	}
-	if(abs(_pos.y-_mypos.y)<WORLD_HEIGHT/2){
+	if(abs((int)(_pos.y-_mypos.y))<WORLD_HEIGHT/2){
 		DrawPos.y = _pos.y-_mypos.y + WINDOW_HEIGHT/2;
 	}else{
-		DrawPos.y = -((_pos.y-_mypos.y)/abs(_pos.y-_mypos.y))*(WORLD_HEIGHT-abs(_pos.y-_mypos.y)) + WINDOW_HEIGHT/2 ;
+		DrawPos.y = -((_pos.y-_mypos.y)/abs((int)(_pos.y-_mypos.y)))*(WORLD_HEIGHT-abs((int)(_pos.y-_mypos.y))) + WINDOW_HEIGHT/2 ;
 	}
 	
 	return DrawPos;

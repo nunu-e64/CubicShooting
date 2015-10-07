@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "Define.h"
 #include "Dxlib.h"
 
@@ -10,7 +10,7 @@ public:
 	void Init();
 
 private:
-	int HighScore[30][3];		//0...Easy, 1...Hard, 2...–¢Žg—p
+	int HighScore[30][3];		//0...Easy, 1...Hard, 2...æœªä½¿ç”¨
 	bool YetResister[30][3];
 
 	int FileHandle;

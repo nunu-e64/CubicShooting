@@ -1,4 +1,4 @@
-#include "DxLib.h"
+ï»¿#include "DxLib.h"
 #include "Define.h"
 #include "Ranking.h"
 #include "math.h"
@@ -16,7 +16,7 @@ CRanking::CRanking(){
 
 void CRanking::Init(){
 
-	char String[256];
+	//char String[256];
 	FileHandle = FileRead_open( "CS_pic/save.csd" ) ;
     if (FileHandle==0) printfDx("ER\n") ;
 
@@ -25,7 +25,7 @@ void CRanking::Init(){
 	//	    FileRead_gets(String, 256, FileHandle ) ;
 			 //   int a,b,c;  
     //float d;  
-    //sscanf(str.c_str(),g%d,%d,%d,%fh,&a,&b,&c,&d);  
+    //sscanf(str.c_str(),â€œ%d,%d,%d,%fâ€,&a,&b,&c,&d);  
 
 			if ( FileRead_scanf(FileHandle , "%d" , &HighScore[i][j])==-1) printfDx("ER\n") ;
 /*
@@ -39,7 +39,7 @@ void CRanking::Init(){
 		}
 	}
 
-    // ƒtƒ@ƒCƒ‹‚ğ•Â‚¶‚é
+    // ãƒ•ã‚¡ã‚¤ãƒ«ã‚’é–‰ã˜ã‚‹
     FileRead_close( FileHandle ) ;
 
 

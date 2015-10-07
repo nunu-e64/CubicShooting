@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "Define.h"
 
 class CStar{
@@ -19,8 +19,8 @@ public:
 	void SetVisible(bool _bool);
 
 	bool EnemyBirthNow(int _timecount, int _index);	
-	int EnemyBirthKind[3];	//‚Ç‚Ìí—Ş‚Ì“G‚ğ
-	int EnemyBirthTime[3];	//‚Ç‚ÌŠÔŠu‚Å¶Y‚·‚é‚©i3í—Ş‚Ü‚Åj
+	int EnemyBirthKind[3];	//ã©ã®ç¨®é¡ã®æ•µã‚’
+	int EnemyBirthTime[3];	//ã©ã®é–“éš”ã§ç”Ÿç”£ã™ã‚‹ã‹ï¼ˆ3ç¨®é¡ã¾ã§ï¼‰
 
 	bool Appear(int _posx, int _posy, double _speed, int _rand, int _enemykind0, int _enemytime0, int _enemykind1, int _enemytime1, int _enemykind2, int _enemytime2);
 	
@@ -31,17 +31,17 @@ private:
 	Vector DeadCircleDrawPos[8];
 	Vector DrawPos;
 
-	int Radius;		//‰~‚Æ‚µ‚½‚Æ‚«‚Ì”¼Œai•`‰æE“–‚½‚è”»’è—pj
+	int Radius;		//å††ã¨ã—ãŸã¨ãã®åŠå¾„ï¼ˆæç”»ãƒ»å½“ãŸã‚Šåˆ¤å®šç”¨ï¼‰
 	Vector Velocity;
 	
 	int Hp;			
-	int TimeGap;	//¯‚²‚Æ‚ÉŠÔ‚¸‚ê‚ğ¶‚Ş‚½‚ß‚Ì—”
+	int TimeGap;	//æ˜Ÿã”ã¨ã«æ™‚é–“ãšã‚Œã‚’ç”Ÿã‚€ãŸã‚ã®ä¹±æ•°
 
 	int ImgStar;
 	int ImgStarGauge[2];
 
 	bool Alive;
-	bool Visible;	//•\¦‚Ì—L–³@ƒQ[ƒ€ƒI[ƒo[ˆ——p
+	bool Visible;	//è¡¨ç¤ºã®æœ‰ç„¡ã€€ã‚²ãƒ¼ãƒ ã‚ªãƒ¼ãƒãƒ¼å‡¦ç†ç”¨
 	
 	Vector DrawPosition(Vector _pos, Vector _mypos);
 };

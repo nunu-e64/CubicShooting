@@ -1,3 +1,13 @@
+#[Rr]elease/
+[Dd]ebug/
+
+!*.exe
+*.lastbuildstate
+*.manifest
+*.tlog
 *.opensdf
 ipch/*
 *.sdf
+Log.txt
+
+*.unsuccessfulbuild

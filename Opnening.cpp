@@ -1,4 +1,4 @@
-#include "DxLib.h"
+ï»¿#include "DxLib.h"
 #include "Define.h"
 #include "math.h"
 #include "Opening.h"
@@ -10,13 +10,13 @@
 #define DEADLINE_SPEED 6.8
 #define DEADLINE_COLOR GetColor(192, 0, 0)
 
-	////////////////////////////CubicJouney‚æ‚è//////////////////////
+	////////////////////////////CubicJouneyã‚ˆã‚Š//////////////////////
 	//Public Const MyMaxSpeed As Long = 12
 	//Public MySpeedX As Single, MySpeedY As Single
 	//Public Const MyKasoku As Single = 4
 	//Public MyBrake As Single
-	//Public Const Gravity As Single = 8          '‚±‚±‚ç‚Ö‚ñ‘S‚Ä100ĞØ•b‚ ‚½‚è
-	//Public Const FirstJumpSpeed As Single = 35  'ƒWƒƒƒ“ƒv‚Ì‰‘¬“x
+	//Public Const Gravity As Single = 8          'ã“ã“ã‚‰ã¸ã‚“å…¨ã¦100ï¾ï¾˜ç§’ã‚ãŸã‚Š
+	//Public Const FirstJumpSpeed As Single = 35  'ã‚¸ãƒ£ãƒ³ãƒ—ã®åˆé€Ÿåº¦
 	/////////////////////////////////////////////////////////////////
 
 
@@ -41,13 +41,13 @@ void COpening::Init(){
 	ImgOpBack[4] = ImgBoxes[7];
 	ImgOpDeadLine = ImgBoxes[8];
 
-	//”wŒi‰æ‘œŠg‘åˆ—
+	//èƒŒæ™¯ç”»åƒæ‹¡å¤§å‡¦ç†
 	int PicSizeX, PicSizeY;
 		GetGraphSize(small_ImgOpBack, &PicSizeX, &PicSizeY);
 		ImgOpBack[0] = MakeScreen(PicSizeX*6, PicSizeY*6, true);
-		SetDrawScreen( ImgOpBack[0] ); //•`‰ææ•ÏX
+		SetDrawScreen( ImgOpBack[0] ); //æç”»å…ˆå¤‰æ›´
 		DrawExtendGraph(0, 0, PicSizeX*6, PicSizeY*6, small_ImgOpBack, true);
-		SetDrawScreen( DX_SCREEN_BACK ); //•`‰ææ‚ğ‰æ–Ê— ‚É
+		SetDrawScreen( DX_SCREEN_BACK ); //æç”»å…ˆã‚’ç”»é¢è£ã«
 	Pos.Set(0, 1362);
 	Velocity.Set(SPEED_X, 0.0);
 	Jump = false;
@@ -66,7 +66,7 @@ void COpening::Awake(int _timecount){
 int COpening::Main(int _timecount, bool _op){
 	NowTime = _timecount-StartTime;
 
-	if (Scene==2 && NowTime-MemoTime==100){		//MemoTime‚Íƒ^ƒCƒgƒ‹•¶š‚ÌƒXƒNƒ[ƒ‹I—¹‚ÌTimeCount
+	if (Scene==2 && NowTime-MemoTime==100){		//MemoTimeã¯ã‚¿ã‚¤ãƒˆãƒ«æ–‡å­—ã®ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«çµ‚äº†æ™‚ã®TimeCount
 		Scene = 3;
 	}
 	
@@ -77,7 +77,7 @@ int COpening::Main(int _timecount, bool _op){
 	DrawCaption(_op);
 
 	
-	////‰¹ŠyON/OFF
+	////éŸ³æ¥½ON/OFF
 	//if( ( GetMouseInput() & MOUSE_INPUT_LEFT ) != 0 ){
 	//	int MouseX , MouseY;
 	//	GetMousePoint( &MouseX , &MouseY ) ;
@@ -195,7 +195,7 @@ void COpening::DrawMine(){
 	int MyPicNum;
 	int MyAngle;
 	
-	MyAngle = (int)(1000*atan(-Velocity.y/Velocity.x)/PI);		// atan¥¥¥-Pi/2`PI/2
+	MyAngle = (int)(1000*atan(-Velocity.y/Velocity.x)/PI);		// atanï½¥ï½¥ï½¥-Pi/2ï½PI/2
 		if(MyAngle<=(int)(-1000*5/12)){
 			MyPicNum = 12;
 		}else if(MyAngle<=(int)(-1000*7/24)){
@@ -226,10 +226,10 @@ void COpening::DrawMine(){
 			DrawExtendGraph((int)DrawPos.x - MY_SIZE/2, (int)DrawPos.y - MY_SIZE/2  , (int)DrawPos.x+MY_SIZE/2, (int)DrawPos.y+MY_SIZE/2, ImgOpMine[19+i], true);
 		}
 	
-		//˜gi”jüj
+		//æ ï¼ˆç ´ç·šï¼‰
 		DrawGraph(WINDOW_WIDTH/2 - 12, WINDOW_HEIGHT/2 - 12, ImgOpMyEdge[(NowTime/3)%4], true);
 	
-		//’†gi–îˆój
+		//ä¸­èº«ï¼ˆçŸ¢å°ï¼‰
 		DrawGraph(WINDOW_WIDTH/2 - 11, WINDOW_HEIGHT/2 - 11, ImgOpMine[MyPicNum], false);
 	
 }
@@ -240,9 +240,9 @@ void COpening::DrawBack(){
 	Vector DrawPos;
 
 	if (Scene>0) {	
-		//Stage.cpp‚©‚çŠÛƒRƒs@‰F’ˆ”wŒi
+		//Stage.cppã‹ã‚‰ä¸¸ã‚³ãƒ”ã€€å®‡å®™èƒŒæ™¯
 		GetGraphSize(ImgOpBack[2], &PicSizeX, &PicSizeY);
-			DrawPos.x = (int)(WORLD_WIDTH+Pos.x) % PicSizeX;		//WORLD_WIDTH‚ğ‘«‚µ‚Ä‚¢‚é‚Ì‚Í‰æ–Ê¶’[‚Å‚Ìˆ—‚Ì‚½‚ß
+			DrawPos.x = (int)(WORLD_WIDTH+Pos.x) % PicSizeX;		//WORLD_WIDTHã‚’è¶³ã—ã¦ã„ã‚‹ã®ã¯ç”»é¢å·¦ç«¯ã§ã®å‡¦ç†ã®ãŸã‚
 			DrawPos.y = (int)(WORLD_HEIGHT+Pos.y) % PicSizeY;
 		
 			DrawRectGraph(0, 0, (int)DrawPos.x, (int)DrawPos.y, PicSizeX-(int)DrawPos.x, PicSizeY-(int)DrawPos.y, ImgOpBack[2], FALSE, FALSE);
@@ -263,7 +263,7 @@ void COpening::DrawBack(){
 			}
 	}
 	
-	//’nã‚Ì”wŒiŠG
+	//åœ°ä¸Šã®èƒŒæ™¯çµµ
 	if(Scene==0 || Scene==1){
 		
 			if(NowTime<523)DrawRectGraph(0, 0, (int)Pos.x/3, (int)Pos.y/3 - WINDOW_HEIGHT/2 + 50+130, WINDOW_WIDTH, WINDOW_HEIGHT, ImgOpBack[3], false, false);
@@ -272,7 +272,7 @@ void COpening::DrawBack(){
 	}
 
 	if(Scene==1){
-		//ƒOƒ‰ƒf[ƒVƒ‡ƒ“
+		//ã‚°ãƒ©ãƒ‡ãƒ¼ã‚·ãƒ§ãƒ³
 		GetGraphSize(ImgOpBack[1], &PicSizeX, &PicSizeY);
 		int j = WINDOW_WIDTH/PicSizeX;
 

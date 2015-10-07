@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 
 class CClock{
@@ -14,10 +14,10 @@ public:
 	int GetGameMode();
 
 private:
-	int OldTime;	//‘Oƒ^[ƒ€‚Ì
-	int TimeCount;	//1/50•b‚ÅƒJƒEƒ“ƒgƒAƒbƒv
+	int OldTime;	//å‰ã‚¿ãƒ¼ãƒ ã®æ™‚åˆ»
+	int TimeCount;	//1/50ç§’ã§ã‚«ã‚¦ãƒ³ãƒˆã‚¢ãƒƒãƒ—
 
-	int EscapeStart;	//Escape‚ğ‰Ÿ‚µn‚ß‚½ƒJƒEƒ“ƒgi50’´‚¦‚½‚çƒQ[ƒ€I—¹j
+	int EscapeStart;	//Escapeã‚’æŠ¼ã—å§‹ã‚ãŸã‚«ã‚¦ãƒ³ãƒˆï¼ˆ50è¶…ãˆãŸã‚‰ã‚²ãƒ¼ãƒ çµ‚äº†ï¼‰
 
 
 	float fps[50];

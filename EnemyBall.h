@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "Define.h"
 #include "Mine.h"
 #include "Enemy.h"
@@ -38,7 +38,7 @@ private:
 	int AppearTime;
 	bool Alive;
 
-	bool WindowCheck(Vector _pos, Vector _mypos);	//‰æ–Ê“à‚É‚ ‚é‚©‚Ç‚¤‚©
+	bool WindowCheck(Vector _pos, Vector _mypos);	//ç”»é¢å†…ã«ã‚ã‚‹ã‹ã©ã†ã‹
 
 	bool JudgeCircle(int _mex, int _mey, Vector _target, int _targetsize);
 	void DrawPosition(Vector _pos, Vector _mypos);

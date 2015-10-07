@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "DxLib.h"
 #include "Define.h"
 
@@ -6,15 +6,20 @@
 
 int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow )
 {
-	SetWindowSize(WINDOW_WIDTH, WINDOW_HEIGHT);	//ƒEƒBƒ“ƒhƒEƒTƒCƒY•ÏX
-	ChangeWindowMode( TRUE ) ; // ƒEƒCƒ“ƒhƒEƒ‚[ƒh‚É•ÏX
-	SetDrawScreen( DX_SCREEN_BACK ); //•`‰ææ‚ğ‰æ–Ê— ‚É
+#ifdef MEMORY_CHECK
+	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);  //newã‚’deleteã—ã¦ã„ãªã„å•é¡Œã‚’æ¤œå‡º
+#endif
+
+
+	SetWindowSize(WINDOW_WIDTH, WINDOW_HEIGHT);	//ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚µã‚¤ã‚ºå¤‰æ›´
+	ChangeWindowMode( TRUE ) ; // ã‚¦ã‚¤ãƒ³ãƒ‰ã‚¦ãƒ¢ãƒ¼ãƒ‰ã«å¤‰æ›´
+	SetDrawScreen( DX_SCREEN_BACK ); //æç”»å…ˆã‚’ç”»é¢è£ã«
 	SetWindowText(GAME_TITLE);
 
-	if( DxLib_Init() == -1 ) return -1 ; // ‚c‚wƒ‰ƒCƒuƒ‰ƒŠ‰Šú‰»
+	if( DxLib_Init() == -1 ) return -1 ; // ï¼¤ï¼¸ãƒ©ã‚¤ãƒ–ãƒ©ãƒªåˆæœŸåŒ–
 		
-		SetTransColor( 255 , 0 , 255 ) ;	//“§‰ßFw’èiƒ}ƒ[ƒ“ƒ_j
-		//SetMouseDispFlag( false );	//ƒ}ƒEƒXƒJ[ƒ\ƒ‹‚ğ•\¦‚µ‚È‚¢
+		SetTransColor( 255 , 0 , 255 ) ;	//é€éè‰²æŒ‡å®šï¼ˆãƒã‚¼ãƒ³ãƒ€ï¼‰
+		//SetMouseDispFlag( false );	//ãƒã‚¦ã‚¹ã‚«ãƒ¼ã‚½ãƒ«ã‚’è¡¨ç¤ºã—ãªã„
 			
 		GameAwake();
 		Opening();
@@ -25,6 +30,6 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLin
 
         }
         
-        DxLib_End(); // DXƒ‰ƒCƒuƒ‰ƒŠI—¹ˆ—
+        DxLib_End(); // DXãƒ©ã‚¤ãƒ–ãƒ©ãƒªçµ‚äº†å‡¦ç†
         return 0;
 }  

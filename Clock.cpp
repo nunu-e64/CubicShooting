@@ -1,8 +1,8 @@
-#include "Clock.h"
+ï»¿#include "Clock.h"
 #include "DxLib.h"
 #include "Define.h"
 
-#define MUSIC_VOLUME 1
+#define MUSIC_VOLUME 200
 
 CClock::CClock(){
 	TimeCount = 0;
@@ -48,7 +48,7 @@ bool CClock::Main(){
 	TimeCount++;
 
 
-	//EscapeƒL[’·‰Ÿ‚µ‚µ‚Ä—£‚·‚ÆƒQ[ƒ€I—¹
+	//Escapeã‚­ãƒ¼é•·æŠ¼ã—ã—ã¦é›¢ã™ã¨ã‚²ãƒ¼ãƒ çµ‚äº†
 	if (CheckHitKey(KEY_INPUT_ESCAPE)) {
 		if(EscapeStart==0){
 			EscapeStart = TimeCount;
