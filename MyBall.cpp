@@ -1,4 +1,4 @@
-#include "DxLib.h"
+﻿#include "DxLib.h"
 #include "MyBall.h"
 #include "Define.h"
 #include "math.h"
@@ -80,15 +80,15 @@ void CMyBall::Draw(Vector _mypos){
 
 Vector CMyBall::DrawPosition(Vector _pos, Vector _mypos){
 	Vector DrawPos;
-	if(abs(_pos.x-_mypos.x)<WORLD_WIDTH-abs(_pos.x-_mypos.x)){
+	if(abs((int)(_pos.x-_mypos.x))<WORLD_WIDTH-abs((int)(_pos.x-_mypos.x))){
 		DrawPos.x = _pos.x-_mypos.x + WINDOW_WIDTH/2;
 	}else{
-		DrawPos.x = -((_pos.x-_mypos.x)/abs(_pos.x-_mypos.x))*(WORLD_WIDTH-abs(_pos.x-_mypos.x)) + WINDOW_WIDTH/2 ;
+		DrawPos.x = -((_pos.x-_mypos.x)/abs((int)(_pos.x-_mypos.x)))*(WORLD_WIDTH-abs((int)(_pos.x-_mypos.x))) + WINDOW_WIDTH/2 ;
 	}
-	if(abs(_pos.y-_mypos.y)<WORLD_HEIGHT-abs(_pos.y-_mypos.y)){
+	if(abs((int)(_pos.y-_mypos.y))<WORLD_HEIGHT-abs((int)(_pos.y-_mypos.y))){
 		DrawPos.y = _pos.y-_mypos.y + WINDOW_HEIGHT/2;
 	}else{
-		DrawPos.y = -((_pos.y-_mypos.y)/abs(_pos.y-_mypos.y))*(WORLD_HEIGHT-abs(_pos.y-_mypos.y)) + WINDOW_HEIGHT/2 ;
+		DrawPos.y = -((_pos.y-_mypos.y)/abs((int)(_pos.y-_mypos.y)))*(WORLD_HEIGHT-abs((int)(_pos.y-_mypos.y))) + WINDOW_HEIGHT/2 ;
 	}
 	
 	return DrawPos;

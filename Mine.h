@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "Define.h"
 
 class CMine{
@@ -34,8 +34,8 @@ private:
 	Vector OldPos[3];
 	Vector DeadCircleDrawPos[8];
 	
-	int Size;		//³•ûŒ`‚Æ‚µ‚½‚Æ‚«‚Ìˆê•Ói•`‰æ—pj
-	int Radius;		//‰~‚Æ‚µ‚½‚Æ‚«‚Ì”¼Œai“–‚½‚è”»’è—pj
+	int Size;		//æ­£æ–¹å½¢ã¨ã—ãŸã¨ãã®ä¸€è¾ºï¼ˆæç”»ç”¨ï¼‰
+	int Radius;		//å††ã¨ã—ãŸã¨ãã®åŠå¾„ï¼ˆå½“ãŸã‚Šåˆ¤å®šç”¨ï¼‰
 	
 	Vector Velocity;
 	double MaxSpeed;
@@ -45,19 +45,19 @@ private:
 	int OldHp;
 	int Hp;
 	int MaxHp;
-	//int MutekiTime;		//”í’e‚Ì–³“GŠÔ
-	//int MutekiStart;	//”í’e‚Ì‚ğ‹L˜^
+	//int MutekiTime;		//è¢«å¼¾æ™‚ã®ç„¡æ•µæ™‚é–“
+	//int MutekiStart;	//è¢«å¼¾æ™‚ã®æ™‚åˆ»ã‚’è¨˜éŒ²
 
 	int Lv[3];
 	int Exp[3];
-	//bool Visible;	//”í’e–³“GŠÔ—p
+	//bool Visible;	//è¢«å¼¾æ™‚ç„¡æ•µæ™‚é–“ç”¨
 
-	int ImgMine[23];	//16•ûˆÊ,’†,~,›,OldPos*3,‹ó”’
+	int ImgMine[23];	//16æ–¹ä½,ä¸­,Ã—,â—‹,OldPos*3,ç©ºç™½
 	int ImgMyEdge[4];
 	int ImgMyHp[3];
 
-	bool Alive;		//¶‘¶Šm”F—p
-	bool Visible;	//•\¦‚Ì—L–³@ƒQ[ƒ€ƒI[ƒo[ˆ——p
+	bool Alive;		//ç”Ÿå­˜ç¢ºèªç”¨
+	bool Visible;	//è¡¨ç¤ºã®æœ‰ç„¡ã€€ã‚²ãƒ¼ãƒ ã‚ªãƒ¼ãƒãƒ¼å‡¦ç†ç”¨
 
 	Vector DrawPosition(Vector _pos, Vector _mypos);
 

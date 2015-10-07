@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "DxLib.h"
 #include "Define.h"
 #include "stdlib.h"
@@ -13,7 +13,7 @@
 #include "Ranking.h"
 
 
-/*“–‚Ídelete‚Ì•K—v«‚Ç‚±‚ë‚©‘¶İ‚·‚ç”F’m‚µ‚Ä‚È‚©‚Á‚½–Í—l‚—‚—‚—‚±‚ê‚Í“‚¢‚—‚—‚—*/
+/*å½“æ™‚ã¯deleteã®å¿…è¦æ€§ã©ã“ã‚ã‹å­˜åœ¨ã™ã‚‰èªçŸ¥ã—ã¦ãªã‹ã£ãŸæ¨¡æ§˜ï½—ï½—ï½—ã“ã‚Œã¯é…·ã„ï½—ï½—ï½—*/
 CMine Mine;
 CMyBall *MyBall = new CMyBall[MY_BALL_NUM];
 CEnemyBall *EnemyBall = new CEnemyBall[ENEMY_BALL_NUM];
@@ -29,7 +29,7 @@ CEnemy *EnemyModel = new CEnemy[30];
 CEnemyBall *EnemyBallModel = new CEnemyBall[30];
 
 
-void GameAwake(){		//ƒQ[ƒ€‹N“®ˆ—
+void GameAwake(){		//ã‚²ãƒ¼ãƒ èµ·å‹•æ™‚å‡¦ç†
 	
 	srand(GetNowCount());	//srand(1);		$
 
@@ -102,7 +102,7 @@ void AllFalse(){
 	Mine.SetVisible(false);
 }
 
-void Awake(){		//ƒXƒe[ƒWŠJn
+void Awake(){		//ã‚¹ãƒ†ãƒ¼ã‚¸é–‹å§‹
 
 	AllFalse();
 	Clock.Awake();
@@ -119,10 +119,10 @@ void Awake(){		//ƒXƒe[ƒWŠJn
 		if(loopcount=80)break;
 	}
 
-	//¯oŒ»
+	//æ˜Ÿå‡ºç¾
 	int StarNum;
 	switch(Stage.GetStageNum()){
-		case 0:		//—ûKƒXƒe[ƒW
+		case 0:		//ç·´ç¿’ã‚¹ãƒ†ãƒ¼ã‚¸
 			StarNum = min(STAR_NUM, 1);
 			Star[0].Appear(1*WORLD_WIDTH/3, 1*WORLD_HEIGHT/2, 0.1, rand(), 0, 342, 4, 1000, 1, 1500);
 			break;
@@ -222,7 +222,7 @@ bool GameLoop(){
 	if(!Clock.Main())return false;
 
 	
-	//Ÿ”s”»’è
+	//å‹æ•—åˆ¤å®š
 	for( int i  = 0; i < STAR_NUM; i++){
 		if(Star[i].GetVisible())break;
 		if(i == STAR_NUM-1) {
@@ -237,14 +237,14 @@ bool GameLoop(){
 		return true;
 	}
 
-	//©€
+	//è‡ªæ­»
 	if (CheckHitKey(KEY_INPUT_ESCAPE)) Mine.SetAlive(false);
 
 
-	//”wŒi•`‰æ‚ÆƒXƒ^[ƒŒ[ƒ_[‚Ì•`‰æ
+	//èƒŒæ™¯æç”»ã¨ã‚¹ã‚¿ãƒ¼ãƒ¬ãƒ¼ãƒ€ãƒ¼ã®æç”»
 	Stage.Draw(Mine.GetPos());
 	
-	//¯ˆÚ“®‚Æ•`‰æ‚ÆÅ‚à‹ß‚¢¯ˆÊ’u‚Ì”»’è
+	//æ˜Ÿç§»å‹•ã¨æç”»ã¨æœ€ã‚‚è¿‘ã„æ˜Ÿä½ç½®ã®åˆ¤å®š
 	Vector nearest_star;
 	nearest_star.Set(WORLD_WIDTH/2, WORLD_HEIGHT/2);
 	for( int i  = 0; i < STAR_NUM; i++){
@@ -254,17 +254,17 @@ bool GameLoop(){
 	}
 	Stage.SetNearestStar(nearest_star);
 	
-	//“G’eˆÚ“®‚Æ•`‰æ
+	//æ•µå¼¾ç§»å‹•ã¨æç”»
 	for( int i  = 0; i < ENEMY_BALL_NUM; i++){
 		if(EnemyBall[i].GetAlive()){
 			EnemyBall[i].Move(Clock.GetTime());
 			EnemyBall[i].Draw(Mine.GetPos());
 			
-			//“G’e”»’èi©‹@j
+			//æ•µå¼¾åˆ¤å®šï¼ˆè‡ªæ©Ÿï¼‰
 			EnemyBall[i].JudgeMine(&Mine, Clock.GetTime());
 		}
 	}
-	//“G’e”­Ë
+	//æ•µå¼¾ç™ºå°„
 	for( int i  = 0; i < ENEMY_NUM; i++){
 		if(Enemy[i].GetAlive()){
 			if((Clock.GetTime()-Enemy[i].GetAppearTime())%Enemy[i].GetShootTime()==0){
@@ -277,12 +277,12 @@ bool GameLoop(){
 		}
 	}
 
-	//“GˆÚ“®‚Æ•`‰æ
+	//æ•µç§»å‹•ã¨æç”»
 	for( int i  = 0; i < ENEMY_NUM; i++){
 		Enemy[i].Move(Mine.GetPos(), Star[Enemy[i].GetMomStar()].GetPos(), Clock.GetTime());
 		Enemy[i].Draw(Mine.GetPos());
 	}
-	//“GoŒ»
+	//æ•µå‡ºç¾
 	for( int i  = 0; i < STAR_NUM; i++){
 		if(Star[i].GetAlive()){
 			for( int j  = 0; j < 3; j++){
@@ -298,18 +298,18 @@ bool GameLoop(){
 	}
 
 
-	//©’eˆÚ“®‚Æ•`‰æ
+	//è‡ªå¼¾ç§»å‹•ã¨æç”»
 	for( int i  = 0; i < MY_BALL_NUM; i++){
 		if(MyBall[i].GetAlive()){
 			MyBall[i].Move(Clock.GetTime());
 			
-			//©’e”»’èi“Gj
+			//è‡ªå¼¾åˆ¤å®šï¼ˆæ•µï¼‰
 			for(int j = 0; j < ENEMY_NUM; j++){
 				if(Enemy[j].GetAlive()){
 					if(MyBall[i].JudgeEnemy(&Enemy[j]))break;
 				}
 			}
-			//©’e”»’èi¯j
+			//è‡ªå¼¾åˆ¤å®šï¼ˆæ˜Ÿï¼‰
 			for(int j = 0; j < STAR_NUM; j++){
 				if(Star[j].GetAlive()){
 					if(MyBall[i].JudgeStar(&Star[j]))break;
@@ -319,7 +319,7 @@ bool GameLoop(){
 		}
 	}
 
-	//©’e”­Ë
+	//è‡ªå¼¾ç™ºå°„
 	if(Mine.GetAlive() && Clock.GetTime()%Mine.GetShootTime()==0){
 		int shotnum = 0;
 		for( int i  = 0; i < MY_BALL_NUM; i++){
@@ -330,24 +330,24 @@ bool GameLoop(){
 		}
 	}
 
-	//©‹@ˆÚ“®‚Æ•`‰æ
+	//è‡ªæ©Ÿç§»å‹•ã¨æç”»
 	Mine.Move();
 	Mine.Draw(Clock.GetTime());
 
-	//c‘¶Star”•\¦
+	//æ®‹å­˜Staræ•°è¡¨ç¤º
 	int alive_starnum=0;
 		for (int i=0; i<STAR_NUM; i++){	if (Star[i].GetAlive()) alive_starnum++;}
 	Stage.SetAliveStarNum(alive_starnum);
 	Stage.DrawStarCount();
 
-	//c‘¶Enemy”•\¦
+	//æ®‹å­˜Enemyæ•°è¡¨ç¤º
 	int alive_enemynum=0;
 		for (int i=0; i<ENEMY_NUM; i++){	if (Enemy[i].GetAlive()) alive_enemynum++;}
 	//Stage.DrawEnemyCount(alive_enemynum);
 
 	
-	//•¶š•\¦
-	if (abs(Mine.GetPos().x)<10 && abs(WORLD_HEIGHT/2-Mine.GetPos().y)<10){
+	//æ–‡å­—è¡¨ç¤º
+	if (abs((int)(Mine.GetPos().x))<10 && abs((int)(WORLD_HEIGHT/2-Mine.GetPos().y))<10){
 		Stage.DrawCaption(true);
 	}else{
 		Stage.DrawCaption(false);
@@ -401,14 +401,14 @@ bool Choice(){
 		if(!Clock.Main())break;
 		
 		DrawString( WINDOW_WIDTH/2 - 90, WINDOW_HEIGHT-100, "Press ENTER to START", WHITE); 
-		DrawFormatString(WINDOW_WIDTH/2 - 60, 100, WHITE,"©@STAGE %d@¨", Stage.GetStageNum()) ;
-		DrawCenterString(WINDOW_WIDTH/2, 180, "ª", WHITE);
+		DrawFormatString(WINDOW_WIDTH/2 - 60, 100, WHITE,"â†ã€€STAGE %dã€€â†’", Stage.GetStageNum()) ;
+		DrawCenterString(WINDOW_WIDTH/2, 180, "â†‘", WHITE);
 		if (Stage.GetDifficulity()){
 			DrawCenterString(WINDOW_WIDTH/2, 210, "HARD", WHITE);
 		}else{
 			DrawCenterString(WINDOW_WIDTH/2, 210, "EASY", WHITE);		
 		}
-		DrawCenterString(WINDOW_WIDTH/2, 240, "«", WHITE);
+		DrawCenterString(WINDOW_WIDTH/2, 240, "â†“", WHITE);
 
 		if((CheckHitKey(KEY_INPUT_RETURN)||(!((GetJoypadInputState( DX_INPUT_KEY_PAD1 )&PAD_INPUT_1)==0))||CheckHitKey(KEY_INPUT_SPACE)) && !PressedRETURN){
 			Clock.SetGameMode(MODE_PLAYING);

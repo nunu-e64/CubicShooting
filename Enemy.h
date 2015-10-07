@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "Define.h"
 
 class CEnemy{
@@ -24,29 +24,29 @@ public:
 	void Appear(int _speed, int _hp, int _alivetime, int _movetype, int _balltype, int _imgnum, int _shoottime);
 	bool Appear(CEnemy *Model, Vector _pos, int _timecount, int _rand, int _momstar);
 
-	Vector GetDirection(Vector _targetpos);	//target‚Ö‚Ì•ûŒüƒxƒNƒgƒ‹‚ğŒvZEæ“¾
+	Vector GetDirection(Vector _targetpos);	//targetã¸ã®æ–¹å‘ãƒ™ã‚¯ãƒˆãƒ«ã‚’è¨ˆç®—ãƒ»å–å¾—
 	double GetAngle(Vector _targetpos);
 
 private:
 	Vector Pos;
-	int Radius;		//‰~‚Æ‚µ‚½‚Æ‚«‚Ì”¼Œai“–‚½‚è”»’è—pj
+	int Radius;		//å††ã¨ã—ãŸã¨ãã®åŠå¾„ï¼ˆå½“ãŸã‚Šåˆ¤å®šç”¨ï¼‰
 	
 	Vector Velocity;
 	int MaxSpeed;
-	double AngleSpeed;	//Šp‘¬“xig‚í‚È‚¢‚±‚Æ‚à‚ ‚éj
+	double AngleSpeed;	//è§’é€Ÿåº¦ï¼ˆä½¿ã‚ãªã„ã“ã¨ã‚‚ã‚ã‚‹ï¼‰
 
-	int MoveType;	//ˆÚ“®‚Ìí—Ş
-	int BallType;	//’e‚Ìí—Ş
+	int MoveType;	//ç§»å‹•ã®ç¨®é¡
+	int BallType;	//å¼¾ã®ç¨®é¡
 	int Hp;			
-	int Elements;	//Œ‚”j‚Ì©‹@‚Ì‚Ç‚ÌƒXƒe[ƒ^ƒX‚ªƒAƒbƒv‚·‚é‚©
-	int MomStar;	//•ê¯‚ÌƒCƒ“ƒfƒbƒNƒX”Ô†
+	int Elements;	//æ’ƒç ´æ™‚ã®è‡ªæ©Ÿã®ã©ã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ãŒã‚¢ãƒƒãƒ—ã™ã‚‹ã‹
+	int MomStar;	//æ¯æ˜Ÿã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ç•ªå·
 
-	int ShootTime;	//’e”­ËŠÔŠu
-	int AliveTime;	//¶‘¶ŠÔ
-	int AppearTime; //oŒ»
+	int ShootTime;	//å¼¾ç™ºå°„é–“éš”
+	int AliveTime;	//ç”Ÿå­˜æ™‚é–“
+	int AppearTime; //å‡ºç¾æ™‚åˆ»
 	
-	int ImgEnemy[3];	//ƒ{ƒfƒBFMoveType‚Å•ª—Ş@ƒwƒbƒhFBall‚Å•ª—Şi”­Ë‚·‚é’e‚Æ“¯‚¶Fj HPƒo[FlŠp
-	int PicSizeX, PicSizeY; //ƒ{ƒfƒB‚ÌŠG‚ÌƒTƒCƒY
+	int ImgEnemy[3];	//ãƒœãƒ‡ã‚£ï¼šMoveTypeã§åˆ†é¡ã€€ãƒ˜ãƒƒãƒ‰ï¼šBallã§åˆ†é¡ï¼ˆç™ºå°„ã™ã‚‹å¼¾ã¨åŒã˜è‰²ï¼‰ HPãƒãƒ¼ï¼šå››è§’
+	int PicSizeX, PicSizeY; //ãƒœãƒ‡ã‚£ã®çµµã®ã‚µã‚¤ã‚º
 
 	bool Alive;
 

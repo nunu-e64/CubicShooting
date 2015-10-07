@@ -1,4 +1,4 @@
-#include "DxLib.h"
+Ôªø#include "DxLib.h"
 #include "Define.h"
 #include "math.h"
 #include "Enemy.h"
@@ -41,7 +41,7 @@ void CEnemy::Appear(int _speed, int _hp, int _alivetime, int _movetype, int _bal
 	ShootTime = _shoottime;
 
 	LoadDivGraph("CS_pic/EnemyList.png", 20, 2, 10, 32, 32, ImgEnemyList);
-	int i = (_movetype + _balltype%9 +1) % 6;	//Ç†ÇÈíˆìxâÊëúÇ™ÉoÉâÇØÇÈÇÊÇ§ìKìñÇ…í≤êÆ
+	int i = (_movetype + _balltype%9 +1) % 6;	//„ÅÇ„ÇãÁ®ãÂ∫¶ÁîªÂÉè„Åå„Éê„É©„Åë„Çã„Çà„ÅÜÈÅ©ÂΩì„Å´Ë™øÊï¥
 	ImgEnemy[0] = ImgEnemyList[2*i];
 	ImgEnemy[1] = ImgEnemyList[1+2*(max(1,min(6,_imgnum))-1)];
 
@@ -96,24 +96,24 @@ void CEnemy::Move(Vector _mypos, Vector _starpos, int _timecount){
 			Alive=FALSE;
 		}
 
-		if(MoveType==0){	//ÉâÉìÉ_ÉÄíºêi
+		if(MoveType==0){	//„É©„É≥„ÉÄ„É†Áõ¥ÈÄ≤
 		}
 
-		if(MoveType==1){	//é©ã@í«îˆ
+		if(MoveType==1){	//Ëá™Ê©üËøΩÂ∞æ
 			Vector direction;
 				direction = GetDirection(_mypos);
 				direction.Multiple(0.2);
 			Velocity.Add(direction);
 			if(Velocity.GetLength()>MaxSpeed) Velocity.Multiple(MaxSpeed/Velocity.GetLength());
 		}
-		if(MoveType==2){	//ïÍêØí«îˆ
+		if(MoveType==2){	//ÊØçÊòüËøΩÂ∞æ
 			Vector direction;
 				direction = GetDirection(_starpos);
 				direction.Multiple(0.1);
 			Velocity.Add(direction);
 			if(Velocity.GetLength()>MaxSpeed) Velocity.Multiple(MaxSpeed/Velocity.GetLength());
 		}
-		if(MoveType==3){	//èoåªë¨ìxÇ≈âÒì]à⁄ìÆ
+		if(MoveType==3){	//Âá∫ÁèæÈÄüÂ∫¶„ÅßÂõûËª¢ÁßªÂãï
 			Vector acceleration;
 			int r = 240;
 				acceleration.Set(cos((long double)(_timecount-AppearTime)*MaxSpeed/r),sin((long double)(_timecount-AppearTime)*MaxSpeed/r));
@@ -121,12 +121,12 @@ void CEnemy::Move(Vector _mypos, Vector _starpos, int _timecount){
 			Velocity.Add(acceleration);
 			if(Velocity.GetLength()>MaxSpeed) Velocity.Multiple(MaxSpeed/Velocity.GetLength());
 		}
-		if(MoveType==4){	//ïÍêØÇÃé¸ÇËÇâÒì]à⁄ìÆ
+		if(MoveType==4){	//ÊØçÊòü„ÅÆÂë®„Çä„ÇíÂõûËª¢ÁßªÂãï
 			int spin_begin_time = 100;
 	
 			if(_timecount-AppearTime==spin_begin_time){
 				Velocity.Set(0, 0);
-				AngleSpeed = (MaxSpeed/(Pos.x-_starpos.x));		//äpë¨ìxê›íË
+				AngleSpeed = (MaxSpeed/(Pos.x-_starpos.x));		//ËßíÈÄüÂ∫¶Ë®≠ÂÆö
 			}else if(_timecount-AppearTime>spin_begin_time){
 				Pos.Set(_starpos.x + MaxSpeed*cos((_timecount-AppearTime-spin_begin_time)*AngleSpeed)/AngleSpeed, _starpos.y + MaxSpeed*sin((_timecount-AppearTime-spin_begin_time)*AngleSpeed)/AngleSpeed);
 			}
@@ -150,11 +150,11 @@ void CEnemy::Draw(Vector _mypos){
 			if(DrawPos.x<-PicSizeX || DrawPos.x>WINDOW_WIDTH+PicSizeX) return;
 			if(DrawPos.y<-PicSizeY || DrawPos.y>WINDOW_HEIGHT+PicSizeY)return;
 			
-		//ìGäG
+		//ÊïµÁµµ
 		DrawRotaGraph((int)(DrawPos.x), (int)(DrawPos.y), 1, -GetAngle(_mypos), ImgEnemy[0], true);
 		DrawRotaGraph((int)(DrawPos.x), (int)(DrawPos.y), 1, -GetAngle(_mypos), ImgEnemy[1], true);
 
-		//HPÉQÅ[ÉW
+		//HP„Ç≤„Éº„Ç∏
 		DrawExtendGraph((int)(DrawPos.x-Hp/2), (int)DrawPos.y+PicSizeY/2+5, (int)(DrawPos.x+Hp/2), (int)DrawPos.y+PicSizeY/2+4, ImgEnemy[2], true);
 	}
 }
@@ -202,15 +202,15 @@ double CEnemy::GetAngle(Vector _targetpos){
 
 Vector CEnemy::DrawPosition(Vector _pos, Vector _mypos){
 	Vector DrawPos;
-	if(abs(_pos.x-_mypos.x)<WORLD_WIDTH-abs(_pos.x-_mypos.x)){
+	if(abs((int)(_pos.x-_mypos.x))<WORLD_WIDTH-abs((int)(_pos.x-_mypos.x))){
 		DrawPos.x = _pos.x-_mypos.x + WINDOW_WIDTH/2;
 	}else{
-		DrawPos.x = -((_pos.x-_mypos.x)/abs(_pos.x-_mypos.x))*(WORLD_WIDTH-abs(_pos.x-_mypos.x)) + WINDOW_WIDTH/2 ;
+		DrawPos.x = -((_pos.x-_mypos.x)/abs((int)(_pos.x-_mypos.x)))*(WORLD_WIDTH-abs((int)(_pos.x-_mypos.x))) + WINDOW_WIDTH/2 ;
 	}
-	if(abs(_pos.y-_mypos.y)<WORLD_HEIGHT-abs(_pos.y-_mypos.y)){
+	if(abs((int)(_pos.y-_mypos.y))<WORLD_HEIGHT-abs((int)(_pos.y-_mypos.y))){
 		DrawPos.y = _pos.y-_mypos.y + WINDOW_HEIGHT/2;
 	}else{
-		DrawPos.y = -((_pos.y-_mypos.y)/abs(_pos.y-_mypos.y))*(WORLD_HEIGHT-abs(_pos.y-_mypos.y)) + WINDOW_HEIGHT/2 ;
+		DrawPos.y = -((_pos.y-_mypos.y)/abs((int)(_pos.y-_mypos.y)))*(WORLD_HEIGHT-abs((int)(_pos.y-_mypos.y))) + WINDOW_HEIGHT/2 ;
 	}
 	
 	return DrawPos;

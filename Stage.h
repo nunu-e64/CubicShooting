@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "Define.h"
 
 class CStage{
@@ -9,7 +9,7 @@ public:
 	void Draw(Vector _mypos);
 	void DrawStarCount();
 	void DrawEnemyCount(int _alive_enemynum);
-	void DrawCaption(bool _showexplain = false);		//©‹@‚â“GŠG‚Ìã‚©‚ç•`‚­•¶š—Ş
+	void DrawCaption(bool _showexplain = false);		//è‡ªæ©Ÿã‚„æ•µçµµã®ä¸Šã‹ã‚‰æãæ–‡å­—é¡
 
 	
 	int GetStageNum();
@@ -37,8 +37,8 @@ private:
 	int AliveStarNum;
 
 	int StageNum;
-	bool HardMode;			//false‚Åeasyƒ‚[ƒh
-	Vector NearestStar;		//©‹@‚Éˆê”Ô‹ß‚¢¯‚Ì‘Š‘ÎˆÊ’u
+	bool HardMode;			//falseã§easyãƒ¢ãƒ¼ãƒ‰
+	Vector NearestStar;		//è‡ªæ©Ÿã«ä¸€ç•ªè¿‘ã„æ˜Ÿã®ç›¸å¯¾ä½ç½®
 
 	void CheckStageNum();
 	double GetAngle(Vector _targetpos);

@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "DxLib.h"
 #include "Mine.h"
 #include "Define.h"
@@ -92,7 +92,7 @@ void CMine::Move(){
 	OldPos[0] = Pos;
 
 	if(Alive){
-		//ã‚©‚Â¶‚Ì‚æ‚¤‚È‰Ÿ‚µ•û‚ð‚µ‚Ä‚¢‚È‚¢‚©ƒ`ƒFƒbƒN
+		//ä¸Šã‹ã¤å·¦ã®ã‚ˆã†ãªæŠ¼ã—æ–¹ã‚’ã—ã¦ã„ãªã„ã‹ãƒã‚§ãƒƒã‚¯
 		if ((!((GetJoypadInputState( DX_INPUT_KEY_PAD1 )&PAD_INPUT_LEFT)==0)) && (!((GetJoypadInputState( DX_INPUT_KEY_PAD1 )&PAD_INPUT_RIGHT)==0))){
 		}else if ((!((GetJoypadInputState( DX_INPUT_KEY_PAD1 )&PAD_INPUT_LEFT)==0)) || (!((GetJoypadInputState( DX_INPUT_KEY_PAD1 )&PAD_INPUT_RIGHT)==0))){
 			if ((!((GetJoypadInputState( DX_INPUT_KEY_PAD1 )&PAD_INPUT_UP)==0)) && (!((GetJoypadInputState( DX_INPUT_KEY_PAD1 )&PAD_INPUT_DOWN)==0))){
@@ -101,7 +101,7 @@ void CMine::Move(){
 			}
 		}
 
-		//¶‰EˆÚ“®
+		//å·¦å³ç§»å‹•
 		if ((!((GetJoypadInputState( DX_INPUT_KEY_PAD1 )&PAD_INPUT_LEFT)==0)) && (!((GetJoypadInputState( DX_INPUT_KEY_PAD1 )&PAD_INPUT_RIGHT)==0))){
 		}else if ((!((GetJoypadInputState( DX_INPUT_KEY_PAD1 )&PAD_INPUT_LEFT)==0))){
 			Velocity.x -= Acceleration*KeyPress;
@@ -109,7 +109,7 @@ void CMine::Move(){
 			Velocity.x += Acceleration*KeyPress;
 		}
 
-		//ã‰ºˆÚ“®
+		//ä¸Šä¸‹ç§»å‹•
 		if ((!((GetJoypadInputState( DX_INPUT_KEY_PAD1 )&PAD_INPUT_DOWN)==0)) && (!((GetJoypadInputState( DX_INPUT_KEY_PAD1 )&PAD_INPUT_UP)==0))){
 		}else if ((!((GetJoypadInputState( DX_INPUT_KEY_PAD1 )&PAD_INPUT_DOWN)==0))){
 			Velocity.y += Acceleration*KeyPress;
@@ -118,7 +118,7 @@ void CMine::Move(){
 		}
 
 		bool FlagVelocity = false;
-			//ƒuƒŒ[ƒLˆ—iƒuƒŒ[ƒL‚Å³•‰•Ï‚í‚Á‚½‚Æ‚«‚Í‘¬‚³0‚É‚·‚é	j
+			//ãƒ–ãƒ¬ãƒ¼ã‚­å‡¦ç†ï¼ˆãƒ–ãƒ¬ãƒ¼ã‚­ã§æ­£è² å¤‰ã‚ã£ãŸã¨ãã¯é€Ÿã•0ã«ã™ã‚‹	ï¼‰
 			if(Velocity.y>0)FlagVelocity=true; else FlagVelocity=false;
 			if (!Velocity.y==0) Velocity.y -= Brake*Velocity.y/Velocity.GetLength();
 			if((Velocity.y<0 && FlagVelocity)||(Velocity.y>0 && !FlagVelocity))Velocity.y = 0;
@@ -130,7 +130,7 @@ void CMine::Move(){
    
 		if(Velocity.GetLength()>MaxSpeed) Velocity.Set(MaxSpeed*Velocity.x/Velocity.GetLength(), MaxSpeed*Velocity.y/Velocity.GetLength());
 
-		//‘¬“x‚ªŒˆ‚Ü‚Á‚½‚Ì‚ÅˆÊ’u‚É”½‰f
+		//é€Ÿåº¦ãŒæ±ºã¾ã£ãŸã®ã§ä½ç½®ã«åæ˜ 
 		Pos.Add(Velocity);
 			if(Pos.x>WORLD_WIDTH)Pos.x-=WORLD_WIDTH;
 			if(Pos.x<0)Pos.x+=WORLD_WIDTH;
@@ -148,7 +148,7 @@ void CMine::Draw(int _timecount){
 	int MyPicNum;
 	int MyAngle;
 	
-	MyAngle = (int)(1000*atan(-Velocity.y/Velocity.x)/PI);		// atan¥¥¥-Pi/2`PI/2
+	MyAngle = (int)(1000*atan(-Velocity.y/Velocity.x)/PI);		// atanï½¥ï½¥ï½¥-Pi/2ï½žPI/2
 		if(MyAngle<=(int)(-1000*5/12)){
 			MyPicNum = 12;
 		}else if(MyAngle<=(int)(-1000*7/24)){
@@ -180,15 +180,15 @@ void CMine::Draw(int _timecount){
 				DrawExtendGraph((int)DrawPos.x-Size/2, (int)DrawPos.y-Size/2, (int)DrawPos.x+Size/2, (int)DrawPos.y+Size/2, ImgMine[19+i], true);
 			}
 	
-		//˜gi”jüj
+		//æž ï¼ˆç ´ç·šï¼‰
 		DrawGraph(WINDOW_WIDTH/2 - 12, WINDOW_HEIGHT/2 - 12, ImgMyEdge[(_timecount/3)%4], true);
 	
-		//’†gi–îˆój
+		//ä¸­èº«ï¼ˆçŸ¢å°ï¼‰
 		DrawGraph(WINDOW_WIDTH/2 - 11, WINDOW_HEIGHT/2 - 11, ImgMine[MyPicNum], false);
 		if(!(OldHp == Hp)&&_timecount/8%2)DrawGraph(WINDOW_WIDTH/2 - 11, WINDOW_HEIGHT/2 - 11, ImgMine[17], false);
 	}
 
-	//ƒeƒBƒEƒ“ƒeƒBƒEƒ“
+	//ãƒ†ã‚£ã‚¦ãƒ³ãƒ†ã‚£ã‚¦ãƒ³
 	if(!Alive){
 		for (int i=0; i<8; i++){
 			if(_timecount/5 % 2 == 0){
@@ -198,8 +198,8 @@ void CMine::Draw(int _timecount){
 	}
 	
 
-	//HPƒo[
-	if(!(Hp==-1)){	//title‚È‚Ç‚Å‚ÍHp-1
+	//HPãƒãƒ¼
+	if(!(Hp==-1)){	//titleãªã©ã§ã¯Hp-1
 		Vector BaseBox;	
 			BaseBox.Set(35, WINDOW_HEIGHT-40);
 
@@ -217,15 +217,15 @@ void CMine::Draw(int _timecount){
 
 Vector CMine::DrawPosition(Vector _pos, Vector _mypos){
 	Vector DrawPos;
-	if(abs(_pos.x-_mypos.x)<WORLD_WIDTH-abs(_pos.x-_mypos.x)){
+	if(abs((int)(_pos.x-_mypos.x))<WORLD_WIDTH-abs((int)(_pos.x-_mypos.x))){
 		DrawPos.x = _pos.x-_mypos.x + WINDOW_WIDTH/2;
 	}else{
-		DrawPos.x = -((_pos.x-_mypos.x)/abs(_pos.x-_mypos.x))*(WORLD_WIDTH-abs(_pos.x-_mypos.x)) + WINDOW_WIDTH/2 ;
+		DrawPos.x = -((_pos.x-_mypos.x)/abs((int)(_pos.x-_mypos.x)))*(WORLD_WIDTH-abs((int)(_pos.x-_mypos.x))) + WINDOW_WIDTH/2 ;
 	}
-	if(abs(_pos.y-_mypos.y)<WORLD_HEIGHT-abs(_pos.y-_mypos.y)){
+	if(abs((int)(_pos.y-_mypos.y))<WORLD_HEIGHT-abs((int)(_pos.y-_mypos.y))){
 		DrawPos.y = _pos.y-_mypos.y + WINDOW_HEIGHT/2;
 	}else{
-		DrawPos.y = -((_pos.y-_mypos.y)/abs(_pos.y-_mypos.y))*(WORLD_HEIGHT-abs(_pos.y-_mypos.y)) + WINDOW_HEIGHT/2 ;
+		DrawPos.y = -((_pos.y-_mypos.y)/abs((int)(_pos.y-_mypos.y)))*(WORLD_HEIGHT-abs((int)(_pos.y-_mypos.y))) + WINDOW_HEIGHT/2 ;
 	}
 	
 	return DrawPos;

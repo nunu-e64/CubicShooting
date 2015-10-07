@@ -1,4 +1,4 @@
-#include "DxLib.h"
+ï»¿#include "DxLib.h"
 #include "EnemyBall.h"
 #include "Define.h"
 #include "math.h"
@@ -64,13 +64,13 @@ bool CEnemyBall::Appear(CEnemyBall *Model, CEnemy *MomEnemy, Vector _mypos, int 
 			Velocity.Multiple(Speed);
 			break;
 			
-		case 3:		//16wayi‘S•ûˆÊF©”šŒ^—pj
+		case 3:		//16wayï¼ˆå…¨æ–¹ä½ï¼šè‡ªçˆ†å‹ç”¨ï¼‰
 			i = (_timecount/MomEnemy->GetShootTime()) % 16 - 7;
 			Velocity.Set(cos(i*PI/8), -sin(i*PI/8));
 			Velocity.Multiple(Speed);
 			break;
 
-		case 4:		//Allwayi‘S•ûˆÊF‰ñ“]ËŒ‚—pj
+		case 4:		//Allwayï¼ˆå…¨æ–¹ä½ï¼šå›è»¢å°„æ’ƒç”¨ï¼‰
 			i = (_timecount % 360) - 180;
 			Velocity.Set(cos(i*PI/180), -sin(i*PI/180));
 			Velocity.Multiple(Speed);
@@ -100,7 +100,7 @@ void CEnemyBall::Draw(Vector _mypos){
 	if(Alive){
 		if (WindowCheck(Pos, _mypos)){
 			DrawPosition(Pos, _mypos);
-			/*if(DrawPos.x<-Radius*2 || DrawPos.x>WINDOW_WIDTH+Radius*2) return;		//WindowCheck‚ğ—˜—p
+			/*if(DrawPos.x<-Radius*2 || DrawPos.x>WINDOW_WIDTH+Radius*2) return;		//WindowCheckã‚’åˆ©ç”¨
 			if(DrawPos.y<-Radius*2 || DrawPos.y>WINDOW_HEIGHT+Radius*2)return;*/
 
 			DrawGraph((int)(DrawPos.x)-Radius, (int)(DrawPos.y)-Radius, ImgEnemyBall, TRUE);
@@ -109,19 +109,19 @@ void CEnemyBall::Draw(Vector _mypos){
 }
 
 void CEnemyBall::DrawPosition(Vector _pos, Vector _mypos){
-	if(abs(_pos.x-_mypos.x)<WORLD_WIDTH/2){
+	if(abs((int)(_pos.x-_mypos.x))<WORLD_WIDTH/2){
 		DrawPos.x = _pos.x-_mypos.x + WINDOW_WIDTH/2;
 	}else{
-		DrawPos.x = -((_pos.x-_mypos.x)/abs(_pos.x-_mypos.x))*(WORLD_WIDTH-abs(_pos.x-_mypos.x)) + WINDOW_WIDTH/2 ;
+		DrawPos.x = -((_pos.x-_mypos.x)/abs((int)(_pos.x-_mypos.x)))*(WORLD_WIDTH-abs((int)(_pos.x-_mypos.x))) + WINDOW_WIDTH/2 ;
 	}
-	if(abs(_pos.y-_mypos.y)<WORLD_HEIGHT/2){
+	if(abs((int)(_pos.y-_mypos.y))<WORLD_HEIGHT/2){
 		DrawPos.y = _pos.y-_mypos.y + WINDOW_HEIGHT/2;
 	}else{
-		DrawPos.y = -((_pos.y-_mypos.y)/abs(_pos.y-_mypos.y))*(WORLD_HEIGHT-abs(_pos.y-_mypos.y)) + WINDOW_HEIGHT/2 ;
+		DrawPos.y = -((_pos.y-_mypos.y)/abs((int)(_pos.y-_mypos.y)))*(WORLD_HEIGHT-abs((int)(_pos.y-_mypos.y))) + WINDOW_HEIGHT/2 ;
 	}
 }
 
-bool CEnemyBall::WindowCheck(Vector _pos, Vector _mypos){	//‰æ–Ê“à‚É‚¢‚ê‚ÎTRUE
+bool CEnemyBall::WindowCheck(Vector _pos, Vector _mypos){	//ç”»é¢å†…ã«ã„ã‚Œã°TRUE
 	if ((_pos.x-_mypos.x < WINDOW_WIDTH/2 && _pos.x-_mypos.x > -WINDOW_WIDTH/2)
 	 || (WORLD_WIDTH-_pos.x)+_mypos.x < WINDOW_WIDTH/2 || (WORLD_WIDTH-_mypos.x)+_pos.x < WINDOW_WIDTH/2){
 		if ((_pos.y-_mypos.y < WINDOW_HEIGHT/2 && _pos.y-_mypos.y > -WINDOW_HEIGHT/2) 
@@ -135,10 +135,10 @@ bool CEnemyBall::WindowCheck(Vector _pos, Vector _mypos){	//‰æ–Ê“à‚É‚¢‚ê‚ÎTRUE
 
 bool CEnemyBall::JudgeMine(CMine *Mine, int _timecount){
 	if(!Mine->GetAlive()) return false;
-	/*if(DrawPos.x<0 || DrawPos.x>WINDOW_WIDTH) return false;		//WindowCheck‚ğ—˜—p
+	/*if(DrawPos.x<0 || DrawPos.x>WINDOW_WIDTH) return false;		//WindowCheckã‚’åˆ©ç”¨
 	if(DrawPos.y<0 || DrawPos.y>WINDOW_HEIGHT)return false;
 */
-/*	if (!WindowCheck(Pos, Mine->GetPos())) return false;		//“–‚½‚è”»’è‚ğ‰~‚©‚çlŠp‚ÉŠÈˆÕ‰»‚µ‚½‚Ì‚Å•s—v
+/*	if (!WindowCheck(Pos, Mine->GetPos())) return false;		//å½“ãŸã‚Šåˆ¤å®šã‚’å††ã‹ã‚‰å››è§’ã«ç°¡æ˜“åŒ–ã—ãŸã®ã§ä¸è¦
 	Vector DistanceVector;
 	DistanceVector.Set(Pos.x-Mine->GetPos().x, Pos.y-Mine->GetPos().y);
 

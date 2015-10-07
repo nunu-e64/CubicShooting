@@ -1,15 +1,15 @@
-#pragma once
+ï»¿#pragma once
 #include "math.h"
 #include "Dxlib.h"
 
 #define PI 3.1415926535897932384626433832795f
 #define WINDOW_WIDTH 640
 #define WINDOW_HEIGHT 480
-#define WORLD_WIDTH 3600	//back.png‚Ì‰¡‚Ì”{”
-#define WORLD_HEIGHT 3600	//back.png‚Ìc‚Ì”{”
+#define WORLD_WIDTH 3600	//back.pngã®æ¨ªã®å€æ•°
+#define WORLD_HEIGHT 3600	//back.pngã®ç¸¦ã®å€æ•°
 
 #define GAME_TITLE "CubicShooting"
-#define VERSION "ver0.21"
+#define VERSION "ver0.30"
 
 #define RED GetColor( 255 , 0 , 0 )
 #define GREEN GetColor( 0 , 255 , 0 )
@@ -34,7 +34,7 @@
 
 extern void DrawCenterString(int x, int y, const TCHAR *String, int color);
 
-#define MEMORY_CHECK	//ƒƒ‚ƒŠ‚Ì‰ğ•ú‚µ–Y‚ê‚ğƒ`ƒFƒbƒNBDebugƒrƒ‹ƒh‚Åg—p‰Â”\B
+#define MEMORY_CHECK	//ãƒ¡ãƒ¢ãƒªã®è§£æ”¾ã—å¿˜ã‚Œã‚’ãƒã‚§ãƒƒã‚¯ã€‚Debugãƒ“ãƒ«ãƒ‰ã§ä½¿ç”¨å¯èƒ½ã€‚
 	#if defined(MEMORY_CHECK) && !defined(MEMORY_CHECK_DISABLE)
 		#define _CRTDBG_MAP_ALLOC
 		#include <stdlib.h>

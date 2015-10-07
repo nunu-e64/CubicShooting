@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #define RED GetColor( 255 , 0 , 0 )
 #define GREEN GetColor( 0 , 255 , 0 )
